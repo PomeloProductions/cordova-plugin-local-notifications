@@ -62,7 +62,8 @@
 - (void) deviceready:(CDVInvokedUrlCommand*)command
 {
     deviceready = YES;
-
+    
+    [self.commandDelegate evalJs:@"console.log('plugin device ready')"];
     for (NSString* js in eventQueue) {
         [self.commandDelegate evalJs:js];
     }
@@ -931,11 +932,16 @@
 - (void) fireEvent:(NSString*)event localnotification:(UILocalNotification*)notification
 {
     NSString* js;
+    NSString* notification_store;
     NSString* params = [NSString stringWithFormat:
                         @"\"%@\"", self.applicationState];
 
     if (notification) {
         NSString* args = [notification encodeToJSON];
+        notification_store = [NSString stringWithFormat:
+               @"window['clicked_notification']= %@;",
+               args];
+        [self.eventQueue addObject:notification_store];
 
         params = [NSString stringWithFormat:
                   @"%@,'%@'",
@@ -947,6 +953,8 @@
           event, params];
 
     if (deviceready) {
+        
+        [self.commandDelegate evalJs:@"console.log('fireEvent ready');"];
         [self.commandDelegate evalJs:js];
     } else {
         [self.eventQueue addObject:js];
