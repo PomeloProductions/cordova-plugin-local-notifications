@@ -62,8 +62,6 @@
 - (void) deviceready:(CDVInvokedUrlCommand*)command
 {
     deviceready = YES;
-    
-    [self.commandDelegate evalJs:@"console.log('plugin device ready')"];
     for (NSString* js in eventQueue) {
         [self.commandDelegate evalJs:js];
     }
@@ -953,8 +951,6 @@
           event, params];
 
     if (deviceready) {
-        
-        [self.commandDelegate evalJs:@"console.log('fireEvent ready');"];
         [self.commandDelegate evalJs:js];
     } else {
         [self.eventQueue addObject:js];
