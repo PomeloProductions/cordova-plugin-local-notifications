@@ -563,7 +563,7 @@ public class LocalNotification extends CordovaPlugin {
             params = notification.toString() + "," + params;
 
             if(event.equals("click")){
-                String window_notification = "window['clicked_notification']= \"" + notification + "\"";
+                String window_notification = "window['clicked_notification']= " + notification;
 //                String window_notification2 = "\"window['clicked_notification']= test1\"";
 //                String window_notification = "window['clicked_notification'] = " + notification.toString();
                 eventQueue.add(window_notification);
