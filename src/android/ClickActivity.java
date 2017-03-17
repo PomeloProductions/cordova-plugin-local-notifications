@@ -43,7 +43,6 @@ public class ClickActivity extends de.appplant.cordova.plugin.notification.Click
     @Override
     public void onClick(Notification notification) {
         android.util.Log.i("clicked", "woo");
-        android.util.Log.i("notification", notification.toString(4));
         LocalNotification.fireEvent("click", notification);
 
         super.onClick(notification);

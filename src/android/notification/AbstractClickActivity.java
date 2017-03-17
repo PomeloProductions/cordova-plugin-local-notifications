@@ -53,7 +53,8 @@ abstract public class AbstractClickActivity extends Activity {
 
         try {
             String data = bundle.getString(Options.EXTRA);
-            System.out.println(data);
+
+
             JSONObject options = new JSONObject(data);
 
             Builder builder =
