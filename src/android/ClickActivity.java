@@ -42,8 +42,8 @@ public class ClickActivity extends de.appplant.cordova.plugin.notification.Click
      */
     @Override
     public void onClick(Notification notification) {
-        Log.d("test","hey hey hey");
-        Log.d("notification",notification);
+        Log.i("test","hey hey hey");
+        Log.i("notification",notification);
         LocalNotification.fireEvent("click", notification);
 
         super.onClick(notification);
