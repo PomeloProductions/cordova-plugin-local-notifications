@@ -558,11 +558,12 @@ public class LocalNotification extends CordovaPlugin {
     static void fireEvent (String event, Notification notification) {
         String state = getApplicationState();
         String params = "\"" + state + "\"";
-        Log.d("HEY2","HERE 2");
+        android.util.Log.d("HEY2","HERE 2");
+//        android.util.Log.d("HEY2",state);
         if (notification != null) {
             params = notification.toString() + "," + params;
 
-            params = notification.toString() + "," + "\"" + window["clicked_notification"] + "\"";
+//            params = notification.toString() + "," + "\"" + window["clicked_notification"] + "\"";
         }
 
         String js = "cordova.plugins.notification.local.core.fireEvent(" +
