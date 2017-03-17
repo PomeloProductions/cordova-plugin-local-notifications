@@ -563,7 +563,7 @@ public class LocalNotification extends CordovaPlugin {
             params = notification.toString() + "," + params;
         }
 
-        String window_notification = "window['clicked_notification']";
+        String window_notification = "window['clicked_notification'] = " + params;
         eventQueue.add(window_notification);
 
         String js = "cordova.plugins.notification.local.core.fireEvent(" +
